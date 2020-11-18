@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <section class="sec">
+        <header>
+            <a href="#"><img src="imgs/logo.png" class="logo"></a>
+            <div class="toggleMenu" onclick = "menuToggle();">
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </div>
+            <ul class='navigation'>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">What's New</a></li>
+                <li><a href="#">Newsletter</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </header>
+
+        <div class="content">
+            <div class="textbox">
+                <h2>That's What<br><span>I like</span></h2>
+                <p>This is the coke demo website. This is just the sample web,
+                     so you cannot do any action from here. If you have some 
+                     query or any contact to this organization, please visit 
+                     the formal website.</p>
+                     <a href="#">View All Products</a>
+            </div>
+            <div class="imgBox">
+                <img src="imgs/pepsi001.png" class='pepsi'>
+            </div>
+        </div>
+        <ul class="thumb">
+            <li><img src="imgs/pepsi001.png" onclick="imgSlider('imgs/pepsi001.png'); changeBgColor('#0062be')"></li>
+            <li><img src="imgs/pepsi002.png" onclick="imgSlider('imgs/pepsi002.png'); changeBgColor('#e60c2c')"></li>
+            <li><img src="imgs/pepsi003.png" onclick="imgSlider('imgs/pepsi003.png'); changeBgColor('#1e1e1e')"></li>
+        </ul>
+
+        <ul class="sns">
+            <li><a href="#"><img src="imgs/facebook.png" alt=""></a></li>
+            <li><a href="#"><img src="imgs/twitter.png" alt=""></a></li>
+            <li><a href="#"><img src="imgs/instagram.png" alt=""></a></li>
+        </ul>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" crossorigin="anonymous"></script>
+    <script type ="text/javascript">
+    let num = 0;
+    function imgSlider(anything){
+        document.querySelector('.pepsi').src = anything;
+    }
+    function changeBgColor(color){
+            const sec = document.querySelector('.sec');
+            sec.style.background = color;
+    }
+
+    function menuToggle(){
+        const navigation = document.querySelector('.navigation');
+        const burger = [document.querySelector('.line1'),document.querySelector('.line3')];
+        navigation.classList.toggle('active');
+
+        if(num ==0){
+        gsap.to('.line2',{opacity:0});
+        gsap.to('.line1',{rotate:45,y:10});
+        gsap.to('.line3',{rotate:-45,y:-10});
+        burger[0].style.background = "black";
+        burger[1].style.background = "black";
+        
+        num++; 
+        }else{
+        gsap.to('.line2',{opacity:1});
+        gsap.to('.line1',{rotate:0,y:0});
+        gsap.to('.line3',{rotate:0,y:0});
+        burger[0].style.background = "white";
+        burger[1].style.background = "white";
+        num =0;
+        }
+        console.log(num)
+    }
+    
+
+    </script>
+</body>
+</html>
